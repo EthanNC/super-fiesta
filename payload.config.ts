@@ -3,12 +3,9 @@ import path from "path";
 import Users from "./cms/collections/Users";
 
 export default buildConfig({
-  cors: [
-    process.env.PAYLOAD_PUBLIC_SERVER_URL || "",
-    "http://localhost:3000",
-  ].filter(Boolean),
+  cors: [process.env.PAYLOAD_PUBLIC_SERVER_URL || ""].filter(Boolean),
   csrf: [process.env.PAYLOAD_PUBLIC_SERVER_URL || ""].filter(Boolean),
-  serverURL: process.env.RAILWAY_PUBLIC_DOMAIN ?? "http://localhost:3000",
+  serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL ?? "http://localhost:3000",
   admin: {
     user: Users.slug,
   },
