@@ -33,7 +33,11 @@ const chokidar =
 async function start() {
   const app = express();
 
-  app.use(cors({ origin: process.env.PAYLOAD_PUBLIC_SERVER_URL ?? "*" }));
+  app.use(
+    cors({
+      origin: [process.env.PAYLOAD_PUBLIC_SERVER_URL!, "http://localhost:3000"],
+    })
+  );
   invariant(process.env.PAYLOAD_SECRET, "PAYLOAD_SECRET is required");
   invariant(process.env.MONGODB_URI, "MONGODB_URI is required");
 
