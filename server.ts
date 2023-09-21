@@ -7,6 +7,7 @@ import { broadcastDevReady, installGlobals } from "@remix-run/node";
 import payload from "payload";
 import invariant from "tiny-invariant";
 import sourceMapSupport from "source-map-support";
+import cors from "cors";
 
 // patch in Remix runtime globals
 installGlobals();
@@ -31,6 +32,12 @@ const chokidar =
 
 async function start() {
   const app = express();
+
+  app.use(
+    cors({
+      origin: ["*"],
+    })
+  );
 
   invariant(process.env.PAYLOAD_SECRET, "PAYLOAD_SECRET is required");
   invariant(process.env.MONGODB_URI, "MONGODB_URI is required");
