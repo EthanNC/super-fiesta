@@ -2,7 +2,14 @@ import type { CollectionConfig } from "payload/types";
 
 const Users: CollectionConfig = {
   slug: "users",
-  auth: true,
+  auth: {
+    depth: 0,
+    cookies: {
+      sameSite: "none",
+      secure: true,
+      domain: process.env.PAYLOAD_PUBLIC_SERVER_URL,
+    },
+  },
   admin: {
     useAsTitle: "email",
   },
