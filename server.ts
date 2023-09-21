@@ -35,7 +35,7 @@ async function start() {
 
   app.use(
     cors({
-      origin: [process.env.PAYLOAD_PUBLIC_SERVER_URL!, "http://localhost:3000"],
+      origin: ["*"],
       credentials: true,
     })
   );
