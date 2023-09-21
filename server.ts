@@ -36,6 +36,7 @@ async function start() {
   app.use(
     cors({
       origin: [process.env.PAYLOAD_PUBLIC_SERVER_URL!, "http://localhost:3000"],
+      credentials: true,
     })
   );
   invariant(process.env.PAYLOAD_SECRET, "PAYLOAD_SECRET is required");
