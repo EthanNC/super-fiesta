@@ -52,7 +52,10 @@ async function start() {
     },
   });
 
-  app.use(payload.authenticate);
+  const router = express.Router();
+
+  // Note: Payload must be initialized before the `payload.authenticate` middleware can be used
+  router.use(payload.authenticate);
 
   app.use(compression());
 

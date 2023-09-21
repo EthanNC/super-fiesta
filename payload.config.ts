@@ -3,8 +3,8 @@ import path from "path";
 import Users from "./cms/collections/Users";
 
 export default buildConfig({
-  cors: ["http://localhost:3000", process.env.PAYLOAD_PUBLIC_SERVER_URL || ""],
-  csrf: ["http://localhost:3000", process.env.PAYLOAD_PUBLIC_SERVER_URL || ""],
+  cors: [process.env.PAYLOAD_PUBLIC_SERVER_URL || ""].filter(Boolean),
+  csrf: [process.env.PAYLOAD_PUBLIC_SERVER_URL || ""].filter(Boolean),
   serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL ?? "http://localhost:3000",
   admin: {
     user: Users.slug,
